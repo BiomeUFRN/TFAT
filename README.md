@@ -1,6 +1,18 @@
 # TFAT - Transcription Factor Analysis Toolkit
 Created by Lucas Felipe
 
+The TFAT (TRANSCRIPTION FACTOR ANALYSIS TOOLKIT) web tool provides access to the collected FT data, allowing:
+
+- TF Enrichment: The analysis and identification of the TF associated with a list of genes;
+TF Check: Check of a list of TF;
+- TF Prediction: Prediction using HOCOMOCO PWMs for DNA sequences;
+- Custom configurations by the user in their queries such as the degree of scalable precision of the TF, tissue expression, data contained in public databases, ChIP-seq experiments and prediction;
+- Filters integrated into the results;
+
+In our database, we collected a total of 16.462.707 associations between the transcription factor and gene, with 26.065 target genes and 1.172 transcription factors. These data are derived from several tools, classified into three methodologies: public databases, CHIP-Seq experiments and PWM predictions. These are six libraries that allow us to identify the enrichment Transcription Factors of a list of genes using as data source Enrichr, HTRIdb, UCSC/ENCODE, GTRD, ChIP-Atlas and HOCOMOCO PWMs.
+
+This is an alternative that integrates several data sources, from the most diverse methodologies on FT, making it complement the existing proposals for TF enrichment analysis.
+
 ## Software Required:
 
 ### PHP 7.2 Server
@@ -14,16 +26,19 @@ Created by Lucas Felipe
 
 ### Edit the information in the 'model/TFATConfig.php' file
 ```php
-$mysqlAddress = "127.0.0.1";
 $tfatServerAddress = "127.0.0.1";
-$pythonPath = "python"
-$mysqlUser = "<insert_username>";
-$mysqlUserPasswd = "<insert_password>";
-$dbName = "tfat_db";
+$pythonPath = "python";
+
+function getMysqli(){
+    $mysqlUser = "<insert_username>";
+    $mysqlUserPasswd = "<insert_password>";
+    $dbName = "tfat_db";
+    $mysqlAddress = "127.0.0.1";
+
+    $mysqli = new mysqli($mysqlAddress, $mysqlUser, $mysqlUserPasswd, $dbName);
+    return $mysqli;
+}
 ```
 
 ### Create the database
 The SQL script 'create_db.sql' creates a database named 'tfat_db' with all the information required for the TFAT server.
-
-## TODO:
-Add link to the 'create_db.sql' file.

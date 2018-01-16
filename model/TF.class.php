@@ -29,6 +29,8 @@ function consultar_score($lista){
 				require_once "TFATConfig.php";
 
 				$mysqli = getMysqli();
+				echo mysqli_connect_error();
+    			if (mysqli_connect_errno()) trigger_error(mysqli_connect_error());
 		
 					$sql_total_tf = 'SELECT count(distinct(GeneID)) as totaltf FROM tf_evidence;';	
 					$query_sql_total_tf = $mysqli->query($sql_total_tf);
@@ -723,9 +725,10 @@ function consultar_enrichment($lista, $metodologia, $stf, $tev){
 				$lista = str_replace(array('%2C','+','%3B','%09'),'%0D%0A',$lista);
 				$l = explode('%0D%0A', $lista);
 				
-				
+				require_once 'TFATConfig.php';
 				$mysqli = getMysqli();
-				
+				echo mysqli_connect_error();
+    			if (mysqli_connect_errno()) trigger_error(mysqli_connect_error());
 				
 				$lista_genes = array();
 				
@@ -878,7 +881,10 @@ function consultar_enrichment($lista, $metodologia, $stf, $tev){
 
 			$entrez = '';
 			
+			require_once 'TFATConfig.php';
 			$mysqli = getMysqli();
+			echo mysqli_connect_error();
+			if (mysqli_connect_errno()) trigger_error(mysqli_connect_error());
 			
 			$symbol = strtoupper($symbol);
 			
@@ -912,7 +918,10 @@ function consultar_enrichment($lista, $metodologia, $stf, $tev){
 				
 		function gene_symbol($id){
 			
+			require_once 'TFATConfig.php';
 			$mysqli = getMysqli();
+			echo mysqli_connect_error();
+    		if (mysqli_connect_errno()) trigger_error(mysqli_connect_error());
 			
 			$sql = 'select Symbol from hsgeneinfo where GeneID = '.$id.';';	
 				$q = $mysqli->query($sql);				
