@@ -568,7 +568,7 @@ error_reporting(0);
 									require_once '../model/TFATConfig.php';
 
 									$pvalue = 0;
-									$pvalue = shell_exec($pythonPath.'./test/fisher_exact.py '.$p11.' '.$p12.' '.$p21.' '.$p22);
+									$pvalue = shell_exec(getPythonPath().' ./test/fisher_exact.py '.$p11.' '.$p12.' '.$p21.' '.$p22);
 									echo '<td class="l" style="vertical-align: middle;">'.$pvalue.'</td>';
 								}
 								

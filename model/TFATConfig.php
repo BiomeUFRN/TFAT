@@ -1,7 +1,12 @@
 <?php
 
-$tfatServerAddress = "127.0.0.1";
-$pythonPath = "python";
+function getTFATServerAddress(){
+    return "127.0.0.1";
+}
+
+function getPythonPath(){
+    return "python";
+}
 
 function getMysqli(){
     $mysqlUser = "<insert_username>";

@@ -700,7 +700,7 @@ function consultar_enrichment($lista, $metodologia, $stf, $tev){
 						include($url);
 					}else{
 						require_once 'TFATConfig.php';
-						echo '<iframe width="100%" height="750" src="http://'.$tfatServerAddress.'/enrichment_network.php?&listGene=T&accScore='.$_GET['accScoreTF'].'" frameborder="0" allowfullscreen></iframe>';
+						echo '<iframe width="100%" height="750" src="http://'.getTFATServerAddress().'/enrichment_network.php?&listGene=T&accScore='.$_GET['accScoreTF'].'" frameborder="0" allowfullscreen></iframe>';
 					}
 				
 			}
