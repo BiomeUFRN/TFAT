@@ -1,5 +1,6 @@
 <?php
 error_reporting(0);
+require_once('../model/TFATConfig.php');
 ?>
 
 <!doctype html>
@@ -8,7 +9,7 @@ error_reporting(0);
   <meta charset="utf-8">
   
   <link rel="shortcut icon" href="img/mlogo.png" type="image/x-icon" />
-  <title>TFAT - Transcription Factor Analysis Toolkit</title>
+  <title>TFAT - Transcription Factor Analysis Tools</title>
 
   
   <style type="text/css">
@@ -34,7 +35,7 @@ error_reporting(0);
 		
 			#menu ul li{
 				display: inline;
-				padding-right: 7.5px;
+				padding-right: 5px;
 			}
 			
 				#menu ul li a, #menu ul li span{
@@ -118,7 +119,7 @@ error_reporting(0);
   
   
   
-	<?php if($_GET['mode']=='enrichment' || $_GET['mode']=='score'){ ?>
+	<?php if($_GET['mode']=='enrichment' || $_GET['mode']=='score' || $_GET['mode']=='convert' || $_GET['mode']=='scan'){ ?>
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script type="text/javascript" src="js/sort/jquery-latest.js"></script> 
@@ -180,8 +181,15 @@ error_reporting(0);
 		<li>
 			<a href="?tfscore=390d56&m=scan">TF Prediction</a>
 		</li>
+		<li>
+			<span>|</span>
+		</li>
+		<li>
+			<a href="?tfscore=390d56&m=convert">TF Convert</a>
+		</li>
+		
 		<li style="text-align: right;">
-				<form method="get" style="width: 300px; float: right; position: relative; top: -7.5px;">
+				<form method="get" style="width: 225px; float: right; position: relative; top: 15px;">
 					<input type="text" name="busca" value="" style="border-radius: 5px; padding: 5px; width: 50%;"/>
 					<input type="submit" value="SEARCH" style="border-radius: 2.5px; padding: 5px; 
 					color: #FFF; background: #4a6077; border: solid 2px #fff; float: right;"/>
@@ -195,7 +203,7 @@ error_reporting(0);
     <div id="layout">
 		
 		<?php
-		
+		require_once('../model/TFATConfig.php');
 		
 			
 			if(isset($_GET['gen'])||isset($_GET['tamanho_seq'])||isset($_POST['tamanho_seq'])){
@@ -274,23 +282,21 @@ error_reporting(0);
 						
 				}else if(isset($_GET['l_tf'])&&$_GET['mode']=='scan'){
 					
-						require("../model/PWM.class.php");
-						$q = new PWM();
-						$q->pwm_scan_hocomoco($_GET['l_tf']);
+						require("../model/TF.class.php");
+						$q = new TF();
+						$q->pwm_scan_hocomoco($_GET['l_tf'], $_GET['result']);
+						
+				}else if(isset($_GET['l_tf'])&&$_GET['mode']=='convert'){
+					
+						require("../model/TF.class.php");
+						$q = new TF();
+						$q->convert_list($_GET['l_tf'], $_GET['to']);
 						
 				}else{
 					
 					include("enrichment_config.php");
 					
 				}
-				
-				
-				
-			}else if(isset($_GET['convert'])){
-
-				include("gene_to_hugo.php");
-				
-				
 				
 			}else if(isset($_GET['consensu'])){
 				

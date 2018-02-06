@@ -1,13 +1,13 @@
 <?php
-
+require_once('../model/TFATConfig.php');
 error_reporting(0);
 
 					
 			$obj = new TF();
-			require_once 'TFATConfig.php';		
+					
 			$mysqli = getMysqli();
 			echo mysqli_connect_error();
-    		if (mysqli_connect_errno()) trigger_error(mysqli_connect_error());
+			if (mysqli_connect_errno()) trigger_error(mysqli_connect_error());
 											
 			$lista = urlencode($lista);
 			$lista = str_replace(array('%2C','+','%3B','%09'),'%0D%0A',$lista);

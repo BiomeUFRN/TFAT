@@ -1,13 +1,13 @@
 <?php
-
+require_once('../model/TFATConfig.php');
 error_reporting(0);
 
 					
 			$obj = new TF();
-			require_once 'TFATConfig.php';		
+					
 			$mysqli = getMysqli();
 			echo mysqli_connect_error();
-    		if (mysqli_connect_errno()) trigger_error(mysqli_connect_error());
+			if (mysqli_connect_errno()) trigger_error(mysqli_connect_error());
 											
 			$lista = urlencode($lista);
 			$lista = str_replace(array('%2C','+','%3B','%09'),'%0D%0A',$lista);
@@ -357,6 +357,7 @@ error_reporting(0);
 			</style>
 
 		<?php
+			require_once('../model/TFATConfig.php');
 			
 			$_GET["l_tf"] = str_replace('%0D%0A','+',$_GET["l_tf"]);
 				
@@ -564,9 +565,7 @@ error_reporting(0);
 									$p12 = (count($l)-$p11);
 									$p21 = $alvos_total[$tfactor];
 									$p22 = $n_total_genes-$p21;
-									
-									require_once '../model/TFATConfig.php';
-
+									require_once('../model/TFATConfig.php');
 									$pvalue = 0;
 									$pvalue = shell_exec(getPythonPath().' ./test/fisher_exact.py '.$p11.' '.$p12.' '.$p21.' '.$p22);
 									echo '<td class="l" style="vertical-align: middle;">'.$pvalue.'</td>';

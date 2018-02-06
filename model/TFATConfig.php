@@ -1,7 +1,7 @@
 <?php
 
 function getTFATServerAddress(){
-    return "127.0.0.1";
+    return "http://127.0.0.1";
 }
 
 function getPythonPath(){
@@ -16,6 +16,6 @@ function getMysqli(){
 
     $mysqli = new mysqli($mysqlAddress, $mysqlUser, $mysqlUserPasswd, $dbName);
     return $mysqli;
-}
+
 
 ?>
