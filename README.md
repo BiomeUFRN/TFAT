@@ -47,3 +47,4 @@ function getMysqli(){
 
 ### Create the database
 The SQL script 'create_db.sql' creates a database named 'tfat_db' with all the information required for the TFAT server.
+Download it [here](https://drive.google.com/open?id=1nq-7MCulL4vXqCA7ollBt8jzmIU4SGMd) (475M)
