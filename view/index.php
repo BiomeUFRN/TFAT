@@ -121,7 +121,7 @@ require_once('../model/TFATConfig.php');
   
 	<?php if($_GET['mode']=='enrichment' || $_GET['mode']=='score' || $_GET['mode']=='convert' || $_GET['mode']=='scan'){ ?>
 		
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 		<script type="text/javascript" src="js/sort/jquery-latest.js"></script> 
 		<script type="text/javascript" src="js/sort/jquery.tablesorter.min.js"></script>
 		
